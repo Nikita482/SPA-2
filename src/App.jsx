@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Page1 from './pages/page1';
+import Page2 from './pages/page2';
+import Page3 from './pages/page3';
+
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    <h1>SPA-2</h1>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    
+      <h1>SPA-2</h1>
+      <Router basename='/SPA-2'> {/* basename тут */}
+
+        <Link to="/">Page 1</Link>
+        <Link to="/Page2">Page 2</Link>
+        <Link to="/Page3">Page 3</Link>
+
+        <Routes>
+          <Route path="/" element={<Page1 />} />
+          <Route path="/Page2" element={<Page2 />} />
+          <Route path="/Page3" element={<Page3 />} />
+        </Routes>
+      </Router> 
     </>
   )
 }
